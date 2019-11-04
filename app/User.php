@@ -26,4 +26,41 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function tapiokas(){
+        
+        return $this->hasMany(Tapioka::class);
+    }
+    //お気に入りしているタピオカ
+    public function favorites(){
+        
+        return $this->belongsToMany(Tapioka::class,'favorites','user_id','tapioka_id')->withTimestamps();
+    }
+    
+    public function favorite($tapiokaId){
+        
+        $exist = $this->is_favorite($tapiokaId);
+        
+        if($exist){
+            return false;
+        }else{
+            $this->favorites()->attach($tapiokaId);
+            return true;
+        }
+    }
+    public function unfavorite($tapiokaId){
+        
+        $exist = $this->is_favorite($tapiokaId);
+        if($exist){
+            $this->favorites()->detach($tapiokaId);
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //お気に入りしているかどうか
+    public function is_favorite($tapiokaId){
+        
+        return $this->favorites()->where('tapioka_id',$tapiokaId)->exists();
+    }
 }

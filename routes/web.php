@@ -14,3 +14,30 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/', 'TapiokasController@index');
+
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
+
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('tapiokas', 'TapiokasController',['only'=>['create','store','show','edit','update','destroy']]);
+    Route::get('mytapioka','TapiokasController@mytapioka')->name('tapiokas.mytapioka');
+    Route::get('search','TapiokasController@search')->name('tapiokas.search');
+    
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
+    });
+    
+    Route::group(['prefix' => 'tapiokas/{id}'], function () {
+        Route::post('favorite', 'FavoriteController@store')->name('favorites.favorite');
+        Route::delete('unfavorite', 'FavoriteController@destroy')->name('favorites.unfavorite');
+    });
+});
