@@ -27,40 +27,40 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function tapiokas(){
+    public function tapiocas(){
         
-        return $this->hasMany(Tapioka::class);
+        return $this->hasMany(Tapioca::class);
     }
     //お気に入りしているタピオカ
     public function favorites(){
         
-        return $this->belongsToMany(Tapioka::class,'favorites','user_id','tapioka_id')->withTimestamps();
+        return $this->belongsToMany(Tapioca::class,'favorites','user_id','tapioca_id')->withTimestamps();
     }
     
-    public function favorite($tapiokaId){
+    public function favorite($tapiocaId){
         
-        $exist = $this->is_favorite($tapiokaId);
+        $exist = $this->is_favorite($tapiocaId);
         
         if($exist){
             return false;
         }else{
-            $this->favorites()->attach($tapiokaId);
+            $this->favorites()->attach($tapiocaId);
             return true;
         }
     }
-    public function unfavorite($tapiokaId){
+    public function unfavorite($tapiocaId){
         
-        $exist = $this->is_favorite($tapiokaId);
+        $exist = $this->is_favorite($tapiocaId);
         if($exist){
-            $this->favorites()->detach($tapiokaId);
+            $this->favorites()->detach($tapiocaId);
             return true;
         }else{
             return false;
         }
     }
     //お気に入りしているかどうか
-    public function is_favorite($tapiokaId){
+    public function is_favorite($tapiocaId){
         
-        return $this->favorites()->where('tapioka_id',$tapiokaId)->exists();
+        return $this->favorites()->where('tapioca_id',$tapiocaId)->exists();
     }
 }

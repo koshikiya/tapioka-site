@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tapioka extends Model
+class Tapioca extends Model
 {
     protected $fillable =['user_id','store_name',
     'item_name','drink_taste','drink_comment','photo',
-    'tapioka_taste','tapioka_size','tapioka_quantity',
-    'tapioka_comment','category'];
+    'tapioca_taste','tapioca_size','tapioca_quantity',
+    'tapioca_comment','category'];
     
     public function user(){
         
         return $this->belongsTo(User::class);
     }
-    public function favorite_tapiokas(){
+    public function favorite_tapiocas(){
         
-        return $this->belongsToMany(User::class,'favorites','tapioka_id','user_id')->withTimestamps();
+        return $this->belongsToMany(User::class,'favorites','tapioca_id','user_id')->withTimestamps();
         
     }
 }

@@ -16,13 +16,13 @@ class FavoriteTable extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('tapioka_id')->unsigned()->index();
+            $table->integer('tapioca_id')->unsigned()->index();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('tapioka_id')->references('id')->on('tapiokas')->onDelete('cascade');
+            $table->foreign('tapioca_id')->references('id')->on('tapiocas')->onDelete('cascade');
             
-            $table->unique(['user_id', 'tapioka_id']);
+            $table->unique(['user_id', 'tapioca_id']);
         });
     }
 

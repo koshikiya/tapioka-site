@@ -1,8 +1,8 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark"> 
-        <a class="navbar-brand" href="/">Tapioka-site</a>
+        <a class="navbar-brand" href="/">Tapioca-site</a>
         <div>
-	        {!! Form::open(['route' => ['tapiokas.search'],'method' => 'get']) !!}
+	        {!! Form::open(['route' => ['tapiocas.search'],'method' => 'get']) !!}
                 {!! Form::select('category', ['' => '選択してください', '黒糖' => '黒糖', 'ミルクティー' => 'ミルクティー','ティー' => 'ティー','フルーツティー' => 'フルーツティー','チーズフォーム' => 'チーズフォーム','スムージー' => 'スムージー'], null, ['class' => 'form-control']) !!}
                 {!! Form::submit('検索') !!}
             {!! Form::close() !!}
@@ -16,11 +16,11 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 @if (Auth::check())
-                    <li class="nav-item">{!! link_to_route('tapiokas.create','投稿する',[],['class'=>'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'nav-link']) !!}</li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="dropdown-item">{!! link_to_route('tapiokas.mytapioka','投稿一覧') !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('tapiocas.mytapioca','投稿一覧') !!}</li>
                             <li class="dropdown-item">{!! link_to_route('users.favorites','お気に入り',['id' => Auth::id()]) !!}</li>
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>

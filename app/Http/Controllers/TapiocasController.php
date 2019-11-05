@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Tapioka;
+use App\Tapioca;
 
-class TapiokasController extends Controller
+class TapiocasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class TapiokasController extends Controller
      */
     public function index()
     {
-        $tapiokas = Tapioka::all();
+        $tapiocas = Tapioca::all();
         
-        return view('tapiokas.index',['tapiokas'=>$tapiokas]);
+        return view('tapiocas.index',['tapiocas'=>$tapiocas]);
     }
 
     /**
@@ -26,9 +26,9 @@ class TapiokasController extends Controller
      */
     public function create()
     {
-        $tapioka = new Tapioka;
+        $tapioca = new Tapioca;
         
-        return view('tapiokas.create',['tapioka'=>$tapioka]);
+        return view('tapiocas.create',['tapioca'=>$tapioca]);
     }
 
     /**
@@ -39,11 +39,11 @@ class TapiokasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->user()->tapiokas()->create([
+        $request->user()->tapiocas()->create([
             'store_name'=>$request->store_name,'item_name'=>$request->item_name,
             'drink_taste'=>$request->drink_taste,'drink_comment'=>$request->drink_comment,
-            'tapioka_taste'=>$request->tapioka_taste,'tapioka_size'=>$request->tapioka_size,
-            'tapioka_quantity'=>$request->tapioka_quantity,'tapioka_comment'=>$request->tapioka_comment,
+            'tapioca_taste'=>$request->tapioca_taste,'tapioca_size'=>$request->tapioca_size,
+            'tapioca_quantity'=>$request->tapioca_quantity,'tapioca_comment'=>$request->tapioca_comment,
             'category'=>$request->category
             ]);
         
@@ -58,11 +58,11 @@ class TapiokasController extends Controller
      */
     public function show($id)
     {
-        $tapioka =Tapioka::find($id);
+        $tapioca =Tapioca::find($id);
         
         
-        return view('tapiokas.show',[
-            'tapioka' => $tapioka,
+        return view('tapiocas.show',[
+            'tapioca' => $tapioca,
             ]);
         
         return redirect('/');
@@ -76,9 +76,9 @@ class TapiokasController extends Controller
      */
     public function edit($id)
     {
-        $tapioka= Tapioka::find($id);
+        $tapioca= Tapioca::find($id);
         
-        return view('tapiokas.edit',['tapioka' => $tapioka]);
+        return view('tapiocas.edit',['tapioca' => $tapioca]);
     }
 
     /**
@@ -90,20 +90,20 @@ class TapiokasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tapioka =Tapioka::find($id);
+        $tapioca =Tapioca::find($id);
         
-        if(\Auth::id() === $tapioka->user_id){
-            $tapioka->store_name = $request->store_name;
-            $tapioka->item_name = $request->item_name;
-            $tapioka->drink_taste = $request->drink_taste;
-            $tapioka->drink_comment = $request->drink_comment;
-            $tapioka->tapioka_taste = $request->tapioka_taste;
-            $tapioka->tapioka_size = $request->tapioka_size;
-            $tapioka->tapioka_quantity = $request->tapioka_quantity;
-            $tapioka->tapioka_comment = $request->tapioka_comment;
-            $tapioka->photo = $request->photo;
-            $tapioka->category = $request->category;
-            $tapioka->save();
+        if(\Auth::id() === $tapioca->user_id){
+            $tapioca->store_name = $request->store_name;
+            $tapioca->item_name = $request->item_name;
+            $tapioca->drink_taste = $request->drink_taste;
+            $tapioca->drink_comment = $request->drink_comment;
+            $tapioca->tapioca_taste = $request->tapioca_taste;
+            $tapioca->tapioca_size = $request->tapioca_size;
+            $tapioca->tapioca_quantity = $request->tapioca_quantity;
+            $tapioca->tapioca_comment = $request->tapioca_comment;
+            $tapioca->photo = $request->photo;
+            $tapioca->category = $request->category;
+            $tapioca->save();
         }
          return redirect('/');    
     }
@@ -116,30 +116,30 @@ class TapiokasController extends Controller
      */
     public function destroy($id)
     {
-        $tapioka = Tapioka::find($id);
+        $tapioca = Tapioca::find($id);
         
-        if(\Auth::id() === $tapioka->user_id){
-            $tapioka->delete();
+        if(\Auth::id() === $tapioca->user_id){
+            $tapioca->delete();
         }
         return redirect('/');
     }
     
-    public function mytapioka(){
+    public function mytapioca(){
         
         $data = [];
         $user = \Auth::user();
-        $tapiokas = $user->tapiokas()->get();
+        $tapiocas = $user->tapiocas()->get();
         $data =[
                 'user'=> $user,
-                'tapiokas'=> $tapiokas,
+                'tapiocas'=> $tapiocas,
                 ];
-        return view('tapiokas.mytapioka',$data);
+        return view('tapiocas.mytapioca',$data);
     }
     
     public function search(Request $request){
         
-        $tapiokas = Tapioka::where('category', $request->category)-> get();
-        return view('tapiokas.search', ['tapiokas' => $tapiokas]) ;
+        $tapiocas = Tapioca::where('category', $request->category)-> get();
+        return view('tapiocas.search', ['tapiocas' => $tapiocas]) ;
         
     }
 }

@@ -10,13 +10,13 @@ class UsersController extends Controller
     public function favorites($id){
         
         $user = User::find($id);
-        $tapiokas = $user->favorites()->paginate(10);
+        $tapiocas = $user->favorites()->paginate(10);
         
         $data = [
             'user' => $user,
-            'tapiokas' => $tapiokas,
+            'tapiocas' => $tapiocas,
         ];
         
-        return view('tapiokas.favorites', $data);
+        return view('tapiocas.favorites', $data);
     }
 }

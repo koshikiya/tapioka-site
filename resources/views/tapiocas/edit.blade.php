@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <h1>新規投稿</h1>
+    <h1>編集</h1>
     
         <div class="row">
             <div class="col-6">
-                {!! Form::model($tapioka, ['route'=>'tapiokas.store']) !!}
+                {!! Form::model($tapioca,['route'=>['tapiocas.update',$tapioca->id],'method'=>'put']) !!}
                     
                     <div class="form-group">
                     <th>
@@ -35,26 +35,26 @@
                     </th>
                     <th>
                         <td>
-                        {!! Form::label('tapioka_taste','タピオカ　味') !!}
-                        {{ Form::select('tapioka_taste', ['' => '選択してください', '1甘' => '1甘', '2甘' => '2甘','3甘' => '3甘','4甘' => '4甘','5甘' => '5甘'], null, ['class' => 'form-control']) }}
+                        {!! Form::label('tapioca_taste','タピオカ　味') !!}
+                        {{ Form::select('tapioca_taste', ['' => '選択してください', '1甘' => '1甘', '2甘' => '2甘','3甘' => '3甘','4甘' => '4甘','5甘' => '5甘'], null, ['class' => 'form-control']) }}
                         </td>
                     </th>
                     <th>
                         <td>
-                        {!! Form::label('tapioka_size','大きさ') !!}
-                        {{ Form::select('tapioka_size', ['' => '選択してください', '小粒' => '小粒', '中粒' => '中粒','大粒' => '大粒'], null, ['class' => 'form-control']) }}
+                        {!! Form::label('tapioca_size','大きさ') !!}
+                        {{ Form::select('tapioca_size', ['' => '選択してください', '小粒' => '小粒', '中粒' => '中粒','大粒' => '大粒'], null, ['class' => 'form-control']) }}
                         </td>
                     </th>
                     <th>
                         <td>
-                        {!! Form::label('tapioka_quantity','量') !!}
-                        {{ Form::select('tapioka_quantity', ['' => '選択してください', '★' => '★', '★★' => '★★','★★★' => '★★★','★★★★' => '★★★★','★★★★★' => '★★★★★'], null, ['class' => 'form-control']) }}
+                        {!! Form::label('tapioca_quantity','量') !!}
+                        {{ Form::select('tapioca_quantity', ['' => '選択してください', '★' => '★', '★★' => '★★','★★★' => '★★★','★★★★' => '★★★★','★★★★★' => '★★★★★'], null, ['class' => 'form-control']) }}
                         </td>
                     </th>
                     <th>
                         <td>
-                        {!! Form::label('tapioka_comment','タピオカ　コメント') !!}
-                        {!! Form::text('tapioka_comment',null,['class' => 'form-control']) !!}
+                        {!! Form::label('tapioca_comment','タピオカ　コメント') !!}
+                        {!! Form::text('tapioca_comment',null,['class' => 'form-control']) !!}
                         </td>
                     </th>
                     <th>
@@ -71,7 +71,7 @@
                     </th>
                     </div>
                     
-                    {!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
                     
                 {!! Form::close() !!}
             </div>

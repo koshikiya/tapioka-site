@@ -13,7 +13,7 @@ class AddColumnsCategory extends Migration
      */
     public function up()
     {
-        Schema::table('tapiokas', function (Blueprint $table) {
+        Schema::table('tapiocas', function (Blueprint $table) {
             $table->string('category');
         });
     }
@@ -25,7 +25,7 @@ class AddColumnsCategory extends Migration
      */
     public function down()
     {
-        Schema::table('tapiokas', function (Blueprint $table) {
+        Schema::table('tapiocas', function (Blueprint $table) {
             $table->dropColumn('category');
         });
     }
