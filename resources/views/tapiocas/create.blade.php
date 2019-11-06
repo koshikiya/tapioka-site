@@ -6,7 +6,7 @@
     
         <div class="row">
             <div class="col-6">
-                {!! Form::model($tapioca, ['route'=>'tapiocas.store']) !!}
+                {!! Form::model($tapioca, ['route'=>'tapiocas.store',"enctype"=>"multipart/form-data"]) !!}
                     
                     <div class="form-group">
                     <th>

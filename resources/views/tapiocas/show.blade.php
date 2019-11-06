@@ -36,17 +36,16 @@
         <th>タピオカ　コメント</th>
         <td>{{ $tapioca->tapioca_comment }}</td>
     </tr>
-    @if($tapioca->photo == null)
-    <tr>
-        <th>写真</th>
-        <td>イメージはありません</td>
-    </tr>
+     @if($tapioca->photo)
+        <tr>
+            <th>写真</th>
+            <td><img src="/storage/image/{{$tapioca->photo}}"></td> 
+        </tr>
     @else
-    <tr>
-        <th>写真</th>
-        <td>{{$tapioca->photo}}</td>
-    </tr>
-    @endif
+        <tr>
+            <td>イメージはありません</td>
+        </tr>
+    @endif 
     @if(Auth::id() === $tapioca->user_id)
     <tr>
         <td>

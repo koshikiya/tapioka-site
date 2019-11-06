@@ -16,15 +16,14 @@
                         <td>{{ $tapioca->item_name }}</td>
                     </tr>
                    
-                @if($tapioca->photo == null)
+                @if($tapioca->photo)
                     <tr>
                         <th>写真</th>
-                        <td>イメージはありません</td>
+                        <td><img src="/storage/image/{{$tapioca->photo}}"></td> 
                     </tr>
                 @else
                     <tr>
-                        <th>写真</th>
-                        <td>{{$tapioca->photo}}</td>
+                        <td>イメージはありません</td>
                     </tr>
                  @endif 
                      <tr>

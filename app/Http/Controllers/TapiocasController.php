@@ -16,6 +16,7 @@ class TapiocasController extends Controller
     {
         $tapiocas = Tapioca::all();
         
+        
         return view('tapiocas.index',['tapiocas'=>$tapiocas]);
     }
 
@@ -39,14 +40,28 @@ class TapiocasController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'store_name' =>'required|max:191',
+            'item_name' =>'required|max:191',
+            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024|dimensions:max_width=300,ratio=1/1',
+            ]);
+        if($request->hasFile('photo')){
+             $tapioca =new Tapioca;
+             $name = $request->file('photo')->getClientOriginalName();
+             $filename = $request->file('photo')->storeAs('public/image', $name);
+             $tapioca->photo = basename($filename);
+             }else{
+                 $tapioca =new Tapioca;
+                 $tapioca->photo = $request->photo;
+             }
         $request->user()->tapiocas()->create([
             'store_name'=>$request->store_name,'item_name'=>$request->item_name,
             'drink_taste'=>$request->drink_taste,'drink_comment'=>$request->drink_comment,
             'tapioca_taste'=>$request->tapioca_taste,'tapioca_size'=>$request->tapioca_size,
             'tapioca_quantity'=>$request->tapioca_quantity,'tapioca_comment'=>$request->tapioca_comment,
-            'category'=>$request->category
+            'category'=>$request->category,'photo'=>$tapioca->photo 
             ]);
-        
+             
         return redirect('/');
     }
 
@@ -77,8 +92,11 @@ class TapiocasController extends Controller
     public function edit($id)
     {
         $tapioca= Tapioca::find($id);
+        if (\Auth::id() === $tapioca->user_id){
         
         return view('tapiocas.edit',['tapioca' => $tapioca]);
+        }
+        return redirect('/');
     }
 
     /**
@@ -89,22 +107,34 @@ class TapiocasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $this->validate($request,[
+            'store_name' =>'required|max:191',
+            'item_name' =>'required|max:191',
+            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024|dimensions:max_width=300',
+            ]);
         $tapioca =Tapioca::find($id);
-        
-        if(\Auth::id() === $tapioca->user_id){
-            $tapioca->store_name = $request->store_name;
-            $tapioca->item_name = $request->item_name;
-            $tapioca->drink_taste = $request->drink_taste;
-            $tapioca->drink_comment = $request->drink_comment;
-            $tapioca->tapioca_taste = $request->tapioca_taste;
-            $tapioca->tapioca_size = $request->tapioca_size;
-            $tapioca->tapioca_quantity = $request->tapioca_quantity;
-            $tapioca->tapioca_comment = $request->tapioca_comment;
-            $tapioca->photo = $request->photo;
-            $tapioca->category = $request->category;
-            $tapioca->save();
+        if($request->hasFile('photo')){
+            
+            \Storage::disk('local')->delete('public/image/'.$tapioca->photo);
+             $name = $request->file('photo')->getClientOriginalName();
+             $filename = $request->file('photo')->storeAs('public/image', $name);
+             $tapioca->photo = basename($filename);
+             
         }
+                
+        $tapioca->store_name = $request->store_name;
+        $tapioca->item_name = $request->item_name;
+        $tapioca->drink_taste = $request->drink_taste;
+        $tapioca->drink_comment = $request->drink_comment;
+        $tapioca->tapioca_taste = $request->tapioca_taste;
+        $tapioca->tapioca_size = $request->tapioca_size;
+        $tapioca->tapioca_quantity = $request->tapioca_quantity;
+        $tapioca->tapioca_comment = $request->tapioca_comment;
+        $tapioca->photo = $tapioca->photo;
+        $tapioca->category = $request->category;
+        $tapioca->save();
+        
          return redirect('/');    
     }
 

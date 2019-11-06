@@ -6,7 +6,7 @@
     
         <div class="row">
             <div class="col-6">
-                {!! Form::model($tapioca,['route'=>['tapiocas.update',$tapioca->id],'method'=>'put']) !!}
+                {!! Form::model($tapioca,['route'=>['tapiocas.update',$tapioca->id],"enctype"=>"multipart/form-data",'method'=>'put']) !!}
                     
                     <div class="form-group">
                     <th>
@@ -66,7 +66,7 @@
                     <th>
                         <td>
                         {!! Form::label('photo', '画像アップロード:') !!}
-                        {!! Form::file('photo') !!}
+                        {!! Form::file('photo',null,['class' => 'form-control']) !!}
                         </td>
                     </th>
                     </div>
