@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tapioca;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class TapiocasController extends Controller
 {
@@ -43,8 +44,15 @@ class TapiocasController extends Controller
         $this->validate($request,[
             'store_name' =>'required|max:191',
             'item_name' =>'required|max:191',
-            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024|dimensions:max_width=300,ratio=1/1',
-            ]);
+            'drink_taste' =>'required',
+            'drink_comment' =>'required',
+            'tapioca_taste' =>'required',
+            'tapioca_size' =>'required',
+            'tapioca_quantity' =>'required',
+            'tapioca_comment' => 'required',
+            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024',
+            'category' =>'required',
+        ]);
         if($request->hasFile('photo')){
              $tapioca =new Tapioca;
              $name = $request->file('photo')->getClientOriginalName();
@@ -53,14 +61,14 @@ class TapiocasController extends Controller
              }else{
                  $tapioca =new Tapioca;
                  $tapioca->photo = $request->photo;
-             }
+        }
         $request->user()->tapiocas()->create([
             'store_name'=>$request->store_name,'item_name'=>$request->item_name,
             'drink_taste'=>$request->drink_taste,'drink_comment'=>$request->drink_comment,
             'tapioca_taste'=>$request->tapioca_taste,'tapioca_size'=>$request->tapioca_size,
             'tapioca_quantity'=>$request->tapioca_quantity,'tapioca_comment'=>$request->tapioca_comment,
             'category'=>$request->category,'photo'=>$tapioca->photo 
-            ]);
+        ]);
              
         return redirect('/');
     }
@@ -78,7 +86,7 @@ class TapiocasController extends Controller
         
         return view('tapiocas.show',[
             'tapioca' => $tapioca,
-            ]);
+        ]);
         
         return redirect('/');
     }
@@ -111,8 +119,15 @@ class TapiocasController extends Controller
         $this->validate($request,[
             'store_name' =>'required|max:191',
             'item_name' =>'required|max:191',
-            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024|dimensions:max_width=300',
-            ]);
+            'drink_taste' =>'required',
+            'drink_comment' =>'required',
+            'tapioca_taste' =>'required',
+            'tapioca_size' =>'required',
+            'tapioca_quantity' =>'required',
+            'tapioca_comment' => 'required',
+            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024',
+            'category' =>'required',
+        ]);
         $tapioca =Tapioca::find($id);
         if($request->hasFile('photo')){
             
@@ -149,6 +164,7 @@ class TapiocasController extends Controller
         $tapioca = Tapioca::find($id);
         
         if(\Auth::id() === $tapioca->user_id){
+            \Storage::disk('local')->delete('public/image/'.$tapioca->photo);
             $tapioca->delete();
         }
         return redirect('/');

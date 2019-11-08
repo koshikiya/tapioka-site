@@ -1,40 +1,34 @@
 @extends('layouts.app')
 
+
 @section('content')
 
-    <h1>タピオカ一覧</h1>
     
     @if(count($tapiocas)>0)
-        <table class="table table-striped">
+       <div class="info">
             @foreach($tapiocas as $tapioca)   
-            <tr>
-                <th>店舗名</th>
-                <td>{{ $tapioca->store_name }}</td>
-            </tr>
-            <tr>
-                <th>商品名</th>
-                <td>{{ $tapioca->item_name }}</td>
-            </tr>
+            
+            <dl>
+                <dd>{{ $tapioca->store_name }}</dd>
+ 
+                <dd>{{ $tapioca->item_name }}</dd>
                    
-            @if($tapioca->photo)
-            <tr>
-                <th>写真</th>
-                <td><img src="/storage/image/{{$tapioca->photo}}"></td> 
-            </tr>
-            @else
-                <tr>
-                <td>イメージはありません</td>
-            </tr>
-            @endif 
-            <tr>
-                <td>
+                @if($tapioca->photo)
+                <dd><img src="/storage/image/{{$tapioca->photo}}" width="200" height="200"></dd> 
+                @else
+                <dd><img src="/storage/image/sample-image.jpg" width="200" height="200"></dd>
+                 @endif 
+                
+                     
                 {!! Form::open(['route' => ['tapiocas.show', $tapioca->id], 'method' => 'get']) !!}
-                    {!! Form::submit('詳細', ['class' => 'btn btn-primary btn-sm']) !!}
+                    <div class="info">{!! Form::submit('詳細', ['class' => 'btn btn-default btn-sm']) !!}</div>
                 {!! Form::close() !!}
-                </td>
-            </tr>
-             @endforeach
-        </table>
-     @endif
-    
+         
+            </dl>
+          
+            @endforeach
+        </div> 
+    @endif
+
 @endsection
+

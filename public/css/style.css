@@ -1,0 +1,115 @@
+
+.info dl{
+  padding: 10px;
+  width: 270px;
+  text-align: center;
+  
+}
+
+.info {
+    font-family: fangsong;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+dl{
+  margin: 10px;
+  
+}
+
+.info .btn {
+      border: 1px solid #778899;
+      color: black;
+      font-family: monospace;
+    }
+
+.info .btn:hover{
+  color: black;
+  border-color: black;
+}
+
+.info2 .btn {
+      border: 1px solid #fff;
+      color: black;
+      font-family: monospace;
+    }
+
+.info2 .btn:hover{
+  color: black;
+  border-color: black;
+}
+
+
+footer{
+    width: 100%;
+    background-color: #778899;
+    color: #fff;
+    text-align: center;
+    padding-top:  10px;
+    margin-top: auto;
+    height: 50px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f7f5;
+}
+
+.content-area {
+  margin: 10px 10px;
+}
+
+.row{
+  margin-right: 10px;
+}
+
+select{
+  font-family: monospace;
+}
+
+#nav-bar{
+      font-family: monospace;
+    }
+.table{
+  display: flex;
+  justify-content: center;
+}
+
+label{
+  font-family: monospace;
+}
+
+.table dl{
+  text-align: center;
+}
+
+.table2{
+  font-family: monospace;
+}
+
+
+.box {
+	width: 90%;
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 3%;
+	border: solid 1px black;
+}
+
+.left {
+	float: left;
+	width: 30%;
+	height: 325px;
+	margin-bottom: 40px;
+} 
+
+h3{
+  margin-top: 50px;
+}
+
+
+

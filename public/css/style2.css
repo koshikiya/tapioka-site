@@ -1,0 +1,85 @@
+input[type='text']{
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-wrap {
+  
+  width: 100%;
+  max-width: 250px;
+}
+
+.select-wrap:before {
+ 
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: url(../img/select.png) no-repeat;
+  background-size: contain;
+}
+
+.select-wrap select{
+  width: 100%;
+  outline:none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 40px;
+  padding: 5px;
+  border:1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.select-wrap select::-ms-expand {
+  display: none;
+  
+}
+
+.submit-wrap{
+  
+  font-family: monospace;
+}
+
+.file{
+  margin-top: 10px;
+}
+
+#file-test {
+  display: none;
+}
+
+#file-test-label {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  padding: 0.4em 0.8em;
+}
+
+#file-test-name {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  color: inherit;
+  display: none;
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.4em 0;
+  width: 100%;
+}
+
+
+
