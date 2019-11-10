@@ -6,11 +6,9 @@
     @if($tapioca->photo)
             <tr>
                 <td><img src="{{$tapioca->photo}}" width="200" height="200"></td> 
-                <td></td>
             </tr>
         @else
             <tr>
-                <td></td>
                 <td><img src="sample-image.jpg" width="200" height="200"></td>
             </tr>
     @endif 

@@ -3,9 +3,6 @@
 
 @section('content')
 
-    <div class="container main-content">
-      <div class="row">
-      <div class="col-md-12 content-area">
     @if(count($tapiocas)>0)
        <div class="info">
             @foreach($tapiocas as $tapioca)   

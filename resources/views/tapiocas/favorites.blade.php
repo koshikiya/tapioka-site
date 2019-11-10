@@ -15,9 +15,8 @@
                    
                 @if($tapioca->photo)
                 <dd><img src="{{$tapioca->photo}}" width="200" height="200"></dd> 
-                @else
-                <dd><img src="/storage/image/sample-image.jpg" width="200" height="200"></dd>
-                 @endif 
+                
+                @endif 
                  
                 {!! Form::open(['route' => ['tapiocas.show', $tapioca->id], 'method' => 'get']) !!}
                     <div class="info"> {!! Form::submit('詳細', ['class' => 'btn btn-default btn-sm']) !!}</div>
