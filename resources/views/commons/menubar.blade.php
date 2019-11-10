@@ -8,10 +8,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
     header.jumbotron {
-      background: url("/storage/image/main.JPG");
+      background: url({{ \Storage::disk('s3')->url("main.JPG") }});
       background-position: center center;
       background-size: cover;
-      color: black;
       font-family: fangsong;
     }
     
