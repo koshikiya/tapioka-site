@@ -14,7 +14,7 @@
                 <dd>{{ $tapioca->item_name }}</dd>
                    
                 @if($tapioca->photo)
-                <dd><img src="/storage/image/{{$tapioca->photo}}" width="200" height="200"></dd> 
+                <dd><img src="{{$tapioca->photo}}" width="200" height="200"></dd> 
                 @else
                 <dd><img src="/storage/image/sample-image.jpg" width="200" height="200"></dd>
                  @endif 
@@ -27,6 +27,8 @@
           
             @endforeach
         </div> 
+        @else
+        <p>お気に入りはありません。</p>
     @endif
 
 @endsection

@@ -21,13 +21,13 @@
         </th>
         <th>
             <td>
-             {!! Form::label('drink_taste','ドリンク　味') !!}
+             {!! Form::label('drink_taste','ドリンク 味') !!}
              {{ Form::select('drink_taste', ['' => '選択してください', '★' => '★', '★★' => '★★','★★★' => '★★★','★★★★' => '★★★★','★★★★★' => '★★★★★'], null, ['class' => 'form-control']) }}
             </td>
         </th>
          <th>
              <td>
-            {!! Form::label('drink_comment','ドリンク　コメント') !!}
+            {!! Form::label('drink_comment','ドリンク コメント') !!}
             {!! Form::textarea('drink_comment',null,['class' => 'form-control','size' => '30x5']) !!}
             </td>
         </th>
@@ -39,19 +39,19 @@
         </th>
         <th>
             <td>
-            {!! Form::label('tapioca_size','大きさ') !!}
+            {!! Form::label('tapioca_size','タピオカ 大きさ') !!}
             {{ Form::select('tapioca_size', ['' => '選択してください', '小粒' => '小粒', '中粒' => '中粒','大粒' => '大粒'], null, ['class' => 'form-control']) }}
             </td>
         </th>
         <th>
             <td>
-            {!! Form::label('tapioca_quantity','量') !!}
+            {!! Form::label('tapioca_quantity','タピオカ 量') !!}
             {{ Form::select('tapioca_quantity', ['' => '選択してください', '★' => '★', '★★' => '★★','★★★' => '★★★','★★★★' => '★★★★','★★★★★' => '★★★★★'], null, ['class' => 'form-control']) }}
             </td>
         </th>
         <th>
             <td>
-            {!! Form::label('tapioca_comment','タピオカ　コメント') !!}
+            {!! Form::label('tapioca_comment','タピオカ コメント') !!}
             {!! Form::textarea('tapioca_comment',null,['class' => 'form-control','size' => '30x5']) !!}
             </td>
         </th>

@@ -5,13 +5,13 @@
     <table class="table table-responsive">
     @if($tapioca->photo)
             <tr>
-                <td><img src="/storage/image/{{$tapioca->photo}}" width="200" height="200"></td> 
+                <td><img src="{{$tapioca->photo}}" width="200" height="200"></td> 
                 <td></td>
             </tr>
         @else
             <tr>
                 <td></td>
-                <td><img src="/storage/image/sample-image.jpg" width="200" height="200"></td>
+                <td><img src="sample-image.jpg" width="200" height="200"></td>
             </tr>
     @endif 
     </table>
@@ -51,38 +51,45 @@
         </tr>
         
         @if(Auth::id() === $tapioca->user_id)
-      
             <tr>
                 <td>
                     {!! Form::open(['route' => ['tapiocas.edit', $tapioca->id], 'method' => 'get']) !!}
-                        <div class="info">{!! Form::submit('編集', ['class' => 'btn btn-default btn-sm']) !!}</div>
+                    <div class="info">{!! Form::submit('編集する', ['class' => 'btn btn-default btn-sm']) !!}</div>
                     {!! Form::close() !!}
                 </td>
                 <td>
                     {!! Form::open(['route' => ['tapiocas.destroy', $tapioca->id], 'method' => 'delete']) !!}
-                        <div class="info">{!! Form::submit('削除', ['class' => 'btn btn-default btn-sm']) !!}</div>
+                    <div class="info">{!! Form::submit('削除する', ['class' => 'btn btn-default btn-sm']) !!}</div>
                     {!! Form::close() !!}
                 </td>
+                <td>
+                <div class="info"><button class="btn btn-default btn-sm" type="button" onclick="history.back()">戻る</button></div>
+                </td>
             </tr>
-            
         @endif
         @if (Auth::id() != $tapioca->user_id)
             
             @if (Auth::user()->is_favorite($tapioca->id))
                 <tr>
-                <td>
-                    {!! Form::open(['route' => ['favorites.unfavorite', $tapioca->id], 'method' => 'delete']) !!}
-                        <div class="info">{!! Form::submit('お気に入りを外す', ['class' => "btn btn-default btn-sm"]) !!}</div>
-                    {!! Form::close() !!}
-                </td>
+                    <td>
+                        {!! Form::open(['route' => ['favorites.unfavorite', $tapioca->id], 'method' => 'delete']) !!}
+                            <div class="info">{!! Form::submit('お気に入りを外す', ['class' => "btn btn-default btn-sm"]) !!}</div>
+                        {!! Form::close() !!}
+                    </td>
+                    <td>
+                        <div class="info"><button class="btn btn-default btn-sm" type="button" onclick="history.back()">戻る</button></div>
+                    </td>
                 </tr>
             @else
                 <tr>
-                <td>
-                    {!! Form::open(['route' => ['favorites.favorite', $tapioca->id]]) !!}
-                        <div class="info">{!! Form::submit('お気に入りをする', ['class' => "btn btn-default btn-sm"]) !!}</div>
-                    {!! Form::close() !!}
-                </td>
+                    <td>
+                        {!! Form::open(['route' => ['favorites.favorite', $tapioca->id]]) !!}
+                            <div class="info">{!! Form::submit('お気に入りをする', ['class' => "btn btn-default btn-sm"]) !!}</div>
+                        {!! Form::close() !!}
+                    </td>
+                    <td>
+                        <div class="info"><button class="btn btn-default btn-sm" type="button" onclick="history.back()">戻る</button></div>
+                    </td>
                 </tr>
             @endif
         @endif

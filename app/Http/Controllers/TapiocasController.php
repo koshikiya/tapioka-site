@@ -15,8 +15,7 @@ class TapiocasController extends Controller
      */
     public function index()
     {
-        $tapiocas = Tapioca::all();
-        
+        $tapiocas = Tapioca::paginate(12);
         
         return view('tapiocas.index',['tapiocas'=>$tapiocas]);
     }
@@ -50,24 +49,26 @@ class TapiocasController extends Controller
             'tapioca_size' =>'required',
             'tapioca_quantity' =>'required',
             'tapioca_comment' => 'required',
-            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024',
+            'photo'=>'image|mimes:jpeg,png,jpg|max:1024',
             'category' =>'required',
         ]);
         if($request->hasFile('photo')){
-             $tapioca =new Tapioca;
-             $name = $request->file('photo')->getClientOriginalName();
-             $filename = $request->file('photo')->storeAs('public/image', $name);
-             $tapioca->photo = basename($filename);
-             }else{
+            $tapioca =new Tapioca;
+            $file = $request->file('photo');
+            $name = $request->file('photo')->getClientOriginalName();
+            $path =\Storage::disk('s3')->putFileas('/', $file,$name,'public');
+            $tapioca->photo = \Storage::disk('s3')->url($path);
+            $tapioca->photo_name = $name;
+            }else{
                  $tapioca =new Tapioca;
-                 $tapioca->photo = $request->photo;
+                 $tapioca->photo = \Storage::disk('s3')->url("sample-image.jpg");
         }
         $request->user()->tapiocas()->create([
             'store_name'=>$request->store_name,'item_name'=>$request->item_name,
             'drink_taste'=>$request->drink_taste,'drink_comment'=>$request->drink_comment,
             'tapioca_taste'=>$request->tapioca_taste,'tapioca_size'=>$request->tapioca_size,
             'tapioca_quantity'=>$request->tapioca_quantity,'tapioca_comment'=>$request->tapioca_comment,
-            'category'=>$request->category,'photo'=>$tapioca->photo 
+            'category'=>$request->category,'photo'=>$tapioca->photo,'photo_name'=>$tapioca->photo_name
         ]);
              
         return redirect('/');
@@ -82,7 +83,6 @@ class TapiocasController extends Controller
     public function show($id)
     {
         $tapioca =Tapioca::find($id);
-        
         
         return view('tapiocas.show',[
             'tapioca' => $tapioca,
@@ -125,16 +125,20 @@ class TapiocasController extends Controller
             'tapioca_size' =>'required',
             'tapioca_quantity' =>'required',
             'tapioca_comment' => 'required',
-            'photo'=>'image|mimes:jpeg,png,jpg,gif|max:1024',
+            'photo'=>'image|mimes:jpeg,png,jpg|max:1024',
             'category' =>'required',
         ]);
+        
         $tapioca =Tapioca::find($id);
         if($request->hasFile('photo')){
             
-            \Storage::disk('local')->delete('public/image/'.$tapioca->photo);
-             $name = $request->file('photo')->getClientOriginalName();
-             $filename = $request->file('photo')->storeAs('public/image', $name);
-             $tapioca->photo = basename($filename);
+            $disk =\Storage::disk('s3');
+            $disk->delete($tapioca->photo_name);
+            $file = $request->file('photo');
+            $name = $request->file('photo')->getClientOriginalName();
+            $path =\Storage::disk('s3')->putFileas('/', $file,$name,'public');
+            $tapioca->photo = \Storage::disk('s3')->url($path);
+            $tapioca->photo_name = $name;
              
         }
                 
@@ -148,6 +152,7 @@ class TapiocasController extends Controller
         $tapioca->tapioca_comment = $request->tapioca_comment;
         $tapioca->photo = $tapioca->photo;
         $tapioca->category = $request->category;
+        $tapioca->photo_name = $tapioca->photo_name;
         $tapioca->save();
         
          return redirect('/');    
@@ -164,13 +169,16 @@ class TapiocasController extends Controller
         $tapioca = Tapioca::find($id);
         
         if(\Auth::id() === $tapioca->user_id){
-            \Storage::disk('local')->delete('public/image/'.$tapioca->photo);
+            
+            $disk =\Storage::disk('s3');
+            $disk->delete($tapioca->photo_name);
             $tapioca->delete();
         }
         return redirect('/');
     }
     
     public function mytapioca(){
+    
         
         $data = [];
         $user = \Auth::user();

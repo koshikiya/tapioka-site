@@ -9,7 +9,7 @@ class Tapioca extends Model
     protected $fillable =['user_id','store_name',
     'item_name','drink_taste','drink_comment','photo',
     'tapioca_taste','tapioca_size','tapioca_quantity',
-    'tapioca_comment','category'];
+    'tapioca_comment','category','photo_name'];
     
     public function user(){
         

@@ -84,8 +84,8 @@
     <!-- ヘッダー部分 -->
     <header class="jumbotron">
       <div class="container">
-        <h1>Header</h1>
-        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <h2>Tapioca</h2>
+        <p>一粒の幸せ、たくさんの笑顔</p>
         @if (Auth::check())
         <p>{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'btn btn-lg midashi-btn']) !!}</p>
         @else

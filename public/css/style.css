@@ -7,7 +7,7 @@
 }
 
 .info {
-    font-family: fangsong;
+    font-family: monospace;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
