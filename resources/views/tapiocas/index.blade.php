@@ -23,9 +23,7 @@
            
         </div> 
     @endif
-    </div>
-    </div>
-    </div>
+   
     {{ $tapiocas->links('pagination::bootstrap-4') }}
 
 @endsection

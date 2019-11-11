@@ -68,6 +68,9 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-item">{!! link_to_route('tapiocas.mytapioca','投稿一覧') !!}</li>
                             <li class="dropdown-item">{!! link_to_route('users.favorites','お気に入り',['id' => Auth::id()]) !!}</li>
+                            <li role="presentation" class="dropdown-header">▼ユーザー設定</li>
+                            <li class="dropdown-item"><a href="#">パスワード再設定</a></li>
+                            <li class="dropdown-item"><a href="#">退会</a></li>                            
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                         </ul>
