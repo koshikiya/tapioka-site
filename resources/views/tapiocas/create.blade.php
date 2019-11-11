@@ -33,7 +33,7 @@
         </th>
         <th>
             <td>
-            {!! Form::label('tapioca_taste','タピオカ　味') !!}
+            {!! Form::label('tapioca_taste','タピオカ 味') !!}
             {{ Form::select('tapioca_taste', ['' => '選択してください', '1甘' => '1甘', '2甘' => '2甘','3甘' => '3甘','4甘' => '4甘','5甘' => '5甘'], null, ['class' => 'form-control']) }}
             </td>
         </th>

@@ -16,7 +16,7 @@
     <div class="table2">
     <table class="table table-responsive ">
          <tr>
-            <td>店舗名</td>
+            <th>店舗名</td>
             <td>{{ $tapioca->store_name }}</td>
         </tr>
         <tr>
@@ -24,11 +24,11 @@
             <td>{{ $tapioca->item_name }}</td>
         </tr>
         <tr>
-            <th>ドリンク味</th>
+            <th>ドリンク 味</th>
             <td>{{ $tapioca->drink_taste }}</td>
         </tr>
         <tr>
-            <th>ドリンク　コメント</th>
+            <th>ドリンク コメント</th>
             <td>{!! nl2br(e($tapioca->drink_comment)) !!}</td>
         </tr>
         <tr>
@@ -44,7 +44,7 @@
             <td>{{ $tapioca->tapioca_quantity }}</td>
         </tr>
         <tr>
-            <th>タピオカ　コメント</th>
+            <th>タピオカ コメント</th>
             <td>{!! nl2br(e($tapioca->tapioca_comment)) !!}</td>
         </tr>
         <tr>
