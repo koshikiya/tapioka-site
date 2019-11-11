@@ -10,7 +10,7 @@ class UsersController extends Controller
     public function favorites($id){
         
         $user = User::find($id);
-        $tapiocas = $user->favorites()->paginate(10);
+        $tapiocas = $user->favorites()->orderBy('created_at', 'desc')->paginate(12);
         
         $data = [
             'user' => $user,

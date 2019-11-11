@@ -47,6 +47,10 @@
             <th>タピオカ　コメント</th>
             <td>{!! nl2br(e($tapioca->tapioca_comment)) !!}</td>
         </tr>
+        <tr>
+            <th>投稿日</th>
+            <td>{{ $tapioca->created_at }}</td>
+        </tr>
         
         @if(Auth::id() === $tapioca->user_id)
             <tr>

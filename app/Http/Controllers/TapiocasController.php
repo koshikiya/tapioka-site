@@ -15,7 +15,7 @@ class TapiocasController extends Controller
      */
     public function index()
     {
-        $tapiocas = Tapioca::paginate(12);
+        $tapiocas = Tapioca::orderBy('created_at', 'desc')->paginate(12);
         
         return view('tapiocas.index',['tapiocas'=>$tapiocas]);
     }
@@ -182,7 +182,7 @@ class TapiocasController extends Controller
         
         $data = [];
         $user = \Auth::user();
-        $tapiocas = $user->tapiocas()->get();
+        $tapiocas = $user->tapiocas()->orderBy('created_at', 'desc')->paginate(12);
         $data =[
                 'user'=> $user,
                 'tapiocas'=> $tapiocas,
@@ -192,7 +192,7 @@ class TapiocasController extends Controller
     
     public function search(Request $request){
         
-        $tapiocas = Tapioca::where('category', $request->category)-> get();
+        $tapiocas = Tapioca::where('category', $request->category)->orderBy('created_at', 'desc')->paginate(12);
         return view('tapiocas.search', ['tapiocas' => $tapiocas]) ;
         
     }

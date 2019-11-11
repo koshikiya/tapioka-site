@@ -25,9 +25,10 @@
             </dl>
           
             @endforeach
-        </div> 
+        </div>
+        {{ $tapiocas->appends(request()->input())->links('pagination::bootstrap-4') }}
         @else
             <p>検索結果はありません。</p>
         @endif
-
+    
 @endsection

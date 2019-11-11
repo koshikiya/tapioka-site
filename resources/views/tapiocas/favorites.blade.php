@@ -29,5 +29,5 @@
         @else
         <p>お気に入りはありません。</p>
     @endif
-
+    {{ $tapiocas->links('pagination::bootstrap-4') }}
 @endsection

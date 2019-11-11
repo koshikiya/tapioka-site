@@ -28,6 +28,6 @@
             @endforeach
         </div> 
     @endif
-
+    {{ $tapiocas->links('pagination::bootstrap-4') }}
 @endsection
 
