@@ -63,4 +63,6 @@ class User extends Authenticatable
         
         return $this->favorites()->where('tapioca_id',$tapiocaId)->exists();
     }
+    
+    
 }

@@ -111,5 +111,20 @@ h3{
     font-size: 48px;
 }
 
+h4{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#container {
+  margin: 0 auto;
+  width: 100%
+  
+}
+#main {
+  text-align: center;
+  padding: 40px;
+}
+    
 
 

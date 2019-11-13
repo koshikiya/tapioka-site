@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Auth;
 
 class UsersController extends Controller
 {
@@ -19,4 +20,6 @@ class UsersController extends Controller
         
         return view('tapiocas.favorites', $data);
     }
+    
+   
 }

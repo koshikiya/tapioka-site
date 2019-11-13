@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>header</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
     header.jumbotron {
-      background: url({{ \Storage::disk('s3')->url("main.JPG") }});
+      background: url({{ \Storage::disk('s3')->url("header.jpeg") }});
       background-position: center center;
       background-size: cover;
       font-family: fangsong;
@@ -40,11 +40,12 @@
       font-family: monospace;
     }
     </style>
-  </head>
+  </head>           
   <body>   
     <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#778899;"> 
-        <a class="navbar-brand" href="/">Tapioca-site</a>
+        <a class="navbar-brand" href="/">Tapilog</a>
+        @if (Auth::check())
         <table>
         <tr>
 	        {!! Form::open(['route' => ['tapiocas.search'],'method' => 'get']) !!}
@@ -53,7 +54,7 @@
             {!! Form::close() !!}
         </tr>
     　　</table>
-        
+        @endif
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,13 +70,14 @@
                             <li class="dropdown-item">{!! link_to_route('tapiocas.mytapioca','投稿一覧') !!}</li>
                             <li class="dropdown-item">{!! link_to_route('users.favorites','お気に入り',['id' => Auth::id()]) !!}</li>
                             <li role="presentation" class="dropdown-header">▼ユーザー設定</li>
-                            <li class="dropdown-item"><a href="#">パスワード再設定</a></li>
+                            
                             <li class="dropdown-item"><a href="#">退会</a></li>                            
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                         </ul>
                     </li>
                 @else
+                    <li class="nav-item">{!! link_to_route('about.get', 'tapilogについて', [], ['class' => 'nav-link']) !!}</a></li>
                     <li class="nav-item">{!! link_to_route('signup.get', '新規会員登録', [], ['class' => 'nav-link']) !!}</li>
                     <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                 @endif
@@ -86,8 +88,9 @@
     <!-- ヘッダー部分 -->
     <header class="jumbotron">
       <div class="container">
-        <h2>Tapioca</h2>
+        <h2>Tapilog</h2>
         <p>一粒の幸せ、たくさんの笑顔</p>
+        <p>あなたも毎日の幸せをシェアしませんか？</p>
         @if (Auth::check())
         <p>{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'btn btn-lg midashi-btn']) !!}</p>
         @else

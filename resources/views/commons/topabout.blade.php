@@ -1,4 +1,51 @@
-<header class="mb-4">
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>header</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    header.jumbotron {
+      background: url({{ \Storage::disk('s3')->url("about2.jpeg") }});
+      background-position: center center;
+      background-size: cover;              
+      width:100%;                              
+      height:800px;            
+      font-family: fangsong;
+    }
+    
+    header .container {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.5);
+      padding: 180px;
+      text-align: center;
+    }
+    
+    header .midashi-btn {
+      border: 1px solid #778899;
+      color: black;
+      border-radius: 0;
+    }
+    
+    header .midashi-btn:hover {
+      color: black;
+      border-color: black;
+    }
+    
+    .navbar-form {
+      padding-right: 30px;
+    }
+    
+    #nav-bar{
+      font-family: monospace;
+    }
+    
+    </style>
+  </head>           
+  <body>   
+    <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#778899;"> 
         <a class="navbar-brand" href="/">Tapilog</a>
         @if (Auth::check())
@@ -39,6 +86,25 @@
                 @endif
             </ul>
         </div>
+       
     </nav>
+    </header>
+    <!-- ヘッダー部分 -->
+    <header class="jumbotron">
+      <div class="container">
+        <h2>Tapilogとは？</h2>
+        <p></p>
+       
+        @if (Auth::check())
+        <p>{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'btn btn-lg midashi-btn']) !!}</p>
+        @else
+        <p>{!! link_to_route('signup.get', '新規会員登録', [], ['class' =>'btn btn-lg midashi-btn']) !!}</p>
+        <p>{!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg midashi-btn']) !!}</p>
+        @endif
+      </div>
+    </header>
     
-</header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

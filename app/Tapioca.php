@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Tapioca extends Model
 {
     protected $fillable =['user_id','store_name',
@@ -20,4 +21,5 @@ class Tapioca extends Model
         return $this->belongsToMany(User::class,'favorites','tapioca_id','user_id')->withTimestamps();
         
     }
+   
 }

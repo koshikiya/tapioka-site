@@ -22,7 +22,7 @@
                 <div class="info">{!! Form::submit('Log in', ['class' => 'btn btn-default btn-sm']) !!}</div>
             {!! Form::close() !!}
 
-            <p class="mt-2">会員登録をしてない方は {!! link_to_route('signup.get', 'こちら') !!}</p>
+            <p class="mt-2">New user? {!! link_to_route('signup.get', 'Sign up now!') !!}</p>
         </div>
     </div>
 @endsection
