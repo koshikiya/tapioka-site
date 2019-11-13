@@ -19,7 +19,7 @@
     header .container {
       margin-top: 30px;
       background: rgba(255,255,255,0.5);
-      padding: 180px;
+      height: 630px;
       text-align: center;
     }
     
