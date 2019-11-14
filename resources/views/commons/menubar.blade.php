@@ -44,7 +44,7 @@
   <body>   
     <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#778899;"> 
-        <a class="navbar-brand" href="/">Tapilog-site</a>
+        <a class="navbar-brand" href="/">●Tapilog-site</a>
         @if (Auth::check())
         <table>
         <tr>
