@@ -125,6 +125,15 @@ h4{
   text-align: center;
   padding-bottom: 40px;
 }
-    
 
+.confirm{
+  font-family: monospace;
+  font-size: 18px;
+  padding: 30px;
+}
+
+h5{
+  text-align: center;
+  padding-top: 60px;
+}
 
