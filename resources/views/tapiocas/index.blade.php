@@ -49,7 +49,10 @@
             </div>
             
         </div>
-    @endif   
+        @include('commons.topabout2')
+    @endif 
+    
+    
 
 @endsection
 

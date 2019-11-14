@@ -32,10 +32,7 @@
     
         
         <script type="text/javascript" src="{{ secure_asset('js/jquery.inview.min.js') }}"></script>
-        
-        
-        
-    
+   
         <footer>
             <p>(c)2019 tapilog-site</p>
         </footer>

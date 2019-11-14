@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>header</title>
+    <title>about</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
     header.jumbotron {
@@ -21,6 +21,7 @@
       background: rgba(255,255,255,0.5);
       height: 630px;
       text-align: center;
+      padding-top: 50px;
     }
     
     header .midashi-btn {
@@ -41,13 +42,22 @@
     #nav-bar{
       font-family: monospace;
     }
+    .message{
+      font-size: 18px;
+      margin-bottom: 40px;
+      letter-spacing: 4px;
+    }
+    h2{
+      margin-bottom: 40px;
+      margin-top: 40px;
+    }
     
     </style>
   </head>           
   <body>   
     <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#778899;"> 
-        <a class="navbar-brand" href="/">Tapilog</a>
+        <a class="navbar-brand" href="/">Tapilog-site</a>
         @if (Auth::check())
         <table>
         <tr>
@@ -93,13 +103,17 @@
     <header class="jumbotron">
       <div class="container">
         <h2>Tapilogとは？</h2>
-        <p></p>
+        <p class="message">投稿ボタン一つでタピオカを<br>手軽に記録し楽しめる文化を広めたいという思いと、<br>
+          日常の中で毎日の幸せをシェアできる時間を目指して<br>
+          「Tapilog」は誕生しました。<br>
+          あなたもお気に入りの一杯を記録しませんか？</p>
+                  
        
         @if (Auth::check())
         <p>{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'btn btn-lg midashi-btn']) !!}</p>
         @else
-        <p>{!! link_to_route('signup.get', '新規会員登録', [], ['class' =>'btn btn-lg midashi-btn']) !!}</p>
-        <p>{!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg midashi-btn']) !!}</p>
+        <p>{!! link_to_route('signup.get', 'はじめる', [], ['class' =>'btn btn-lg midashi-btn']) !!}</p>
+        
         @endif
       </div>
     </header>
