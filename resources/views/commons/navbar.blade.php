@@ -1,4 +1,4 @@
-<header class="mb-4">
+<header class="mb-4 sticky-top">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#778899;"> 
         <a class="navbar-brand" href="/">●Tapilog-site</a>
         @if (Auth::check())
@@ -27,7 +27,7 @@
                             <li class="dropdown-item">{!! link_to_route('users.favorites','お気に入り',['id' => Auth::id()]) !!}</li>
                             <li role="presentation" class="dropdown-header">▼ユーザー設定</li>
                            
-                            <li class="dropdown-item"><a href="#">退会</a></li>
+                            <li class="dropdown-item">{!! link_to_route('users.delete_confirm','退会') !!}</li>
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                         </ul>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnsToTapiocas extends Migration
+class AddColumnSoftDeletesUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnsToTapiocas extends Migration
      */
     public function up()
     {
-        Schema::table('tapiocas', function (Blueprint $table) {
-            $table->integer('favorites_count')->default(0);
+        Schema::table('users', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +25,8 @@ class AddColumnsToTapiocas extends Migration
      */
     public function down()
     {
-        Schema::table('tapiocas', function (Blueprint $table) {
-            $table->dropColumn('favorites_count'); 
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
         });
     }
 }
