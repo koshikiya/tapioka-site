@@ -106,6 +106,9 @@ return [
         'tapioca_quantity' => 'タピオカ 量',
         'tapioca_comment' => 'タピオカ コメント',
         'category' => 'カテゴリー',
+        'email' => 'メールアドレス',
+        'name' => '名前',
+        'password' => 'パスワード',
     
         ],
 ];
