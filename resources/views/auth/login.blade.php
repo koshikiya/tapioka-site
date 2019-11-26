@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>ログイン</h1>
+        <h3>ログイン</h3>
     </div>
 
     <div class="row">
