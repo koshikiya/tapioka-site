@@ -67,7 +67,7 @@ class TapiocasController extends Controller
             }else{
                  $tapioca =new Tapioca;
                  $tapioca->photo = \Storage::disk('s3')->url("sample-image.jpg");
-        }
+            }
         $request->user()->tapiocas()->create([
             'store_name'=>$request->store_name,'item_name'=>$request->item_name,
             'drink_taste'=>$request->drink_taste,'drink_comment'=>$request->drink_comment,

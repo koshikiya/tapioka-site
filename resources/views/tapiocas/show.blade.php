@@ -3,15 +3,9 @@
 @section('content')
     
     <table class="table table-responsive">
-    @if($tapioca->photo)
             <tr>
                 <td><img src="{{$tapioca->photo}}" width="200" height="200"></td> 
             </tr>
-        @else
-            <tr>
-                <td><img src="sample-image.jpg" width="200" height="200"></td>
-            </tr>
-    @endif 
     </table>
     <div class="table2">
     <table class="table table-responsive ">

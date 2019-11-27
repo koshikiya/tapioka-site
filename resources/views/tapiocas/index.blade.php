@@ -12,7 +12,6 @@
      
                     <dd>{{ $tapioca->item_name }}</dd>
                        
-                    
                     <dd><img src="{{$tapioca->photo}}" width="200" height="200"></dd> 
                       
                     {!! Form::open(['route' => ['tapiocas.show', $tapioca->id], 'method' => 'get']) !!}
