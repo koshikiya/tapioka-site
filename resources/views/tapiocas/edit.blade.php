@@ -61,7 +61,7 @@
             </td>
         </th>
         <div class="file">
-            <label for="file-test" id="file-test-label">画像アップロード</label>
+            {!! Form::label('file-test','画像アップロード',['id' =>'file-test-label']) !!}
             {!! Form::file('photo',['id' =>'file-test']) !!}
             <input type="text" id="file-test-name" disabled="">
         </div>

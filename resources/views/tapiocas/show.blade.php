@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <th>ドリンク コメント</th>
-            <td>{{ nl2br(e($tapioca->drink_comment)) }}</td>
+            <td>{!! nl2br(e($tapioca->drink_comment)) !!}</td>
         </tr>
         <tr>
             <th>大きさ</th>
@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <th>タピオカ コメント</th>
-            <td>{{ nl2br(e($tapioca->tapioca_comment)) }}</td>
+            <td>{!! nl2br(e($tapioca->tapioca_comment)) !!}</td>
         </tr>
         <tr>
             <th>投稿日</th>
