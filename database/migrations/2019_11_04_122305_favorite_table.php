@@ -21,7 +21,8 @@ class FavoriteTable extends Migration
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('tapioca_id')->references('id')->on('tapiocas')->onDelete('cascade');
-            
+           
+            //重複不可
             $table->unique(['user_id', 'tapioca_id']);
         });
     }

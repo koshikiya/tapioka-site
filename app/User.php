@@ -33,6 +33,7 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $dates = ['deleted_at'];
     
+    //投稿したタピオカ
     public function tapiocas(){
         
         return $this->hasMany(Tapioca::class);

@@ -16,6 +16,7 @@ class Tapioca extends Model
         
         return $this->belongsTo(User::class);
     }
+    //お気に入りしているユーザー
     public function favorite_tapiocas(){
         
         return $this->belongsToMany(User::class,'favorites','tapioca_id','user_id')->withTimestamps();

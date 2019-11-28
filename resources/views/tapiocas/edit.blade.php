@@ -66,7 +66,7 @@
             {!! Form::text('file-test','null',['id' =>'file-test-name','disabled' => '']) !!}
         </div>
        <div class ="info">
-         {!! Form::submit('投稿', ['class' => 'btn btn-default btn-sm']) !!}
+         {!! Form::submit('更新', ['class' => 'btn btn-default btn-sm']) !!}
         </div>            
         {!! Form::close() !!}
         
