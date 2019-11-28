@@ -32,7 +32,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('delete_confirm', 'UsersController@delete_confirm')->name('users.delete_confirm');
         Route::delete('deleteData', 'UsersController@deleteData')->name('users.delete');
         Route::get('mytapioca','TapiocasController@mytapioca')->name('tapiocas.mytapioca');
-        
     });
     
     Route::group(['prefix' => 'tapiocas/{id}'], function () {
