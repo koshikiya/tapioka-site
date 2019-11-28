@@ -14,7 +14,7 @@
 
 Auth::routes();
 
-Route::get('/', 'TapiocasController@index');
+Route::get('/', 'TapiocasController@index')->name('index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -25,14 +25,14 @@ Route::get('about', 'TapiocasController@about')->name('about.get');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('tapiocas', 'TapiocasController',['only'=>['create','store','show','edit','update','destroy']]);
-    Route::get('mytapioca','TapiocasController@mytapioca')->name('tapiocas.mytapioca');
     Route::get('search','TapiocasController@search')->name('tapiocas.search');
-    Route::get('delete_confirm', 'UsersController@delete_confirm')->name('users.delete_confirm');
-    
    
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
+        Route::get('delete_confirm', 'UsersController@delete_confirm')->name('users.delete_confirm');
         Route::delete('deleteData', 'UsersController@deleteData')->name('users.delete');
+        Route::get('mytapioca','TapiocasController@mytapioca')->name('tapiocas.mytapioca');
+        
     });
     
     Route::group(['prefix' => 'tapiocas/{id}'], function () {

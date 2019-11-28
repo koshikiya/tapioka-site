@@ -50,8 +50,6 @@
         </div>
         @include('commons.topabout2')
     @endif 
-    
-    
-
+ 
 @endsection
 

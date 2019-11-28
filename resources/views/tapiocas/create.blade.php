@@ -66,7 +66,8 @@
             {!! Form::file('photo',['id' =>'file-test']) !!}
             <input type="text" id="file-test-name" disabled="">
         </div>
-       <div class ="info">
+        
+        <div class ="info">
          {!! Form::submit('投稿', ['class' => 'btn btn-default btn-sm']) !!}
         </div>            
         {!! Form::close() !!}

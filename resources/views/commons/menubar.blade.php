@@ -67,11 +67,11 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="dropdown-item">{!! link_to_route('tapiocas.mytapioca','投稿一覧') !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('tapiocas.mytapioca','投稿一覧',['id' => Auth::id()]) !!}</li>
                             <li class="dropdown-item">{!! link_to_route('users.favorites','お気に入り',['id' => Auth::id()]) !!}</li>
                             <li role="presentation" class="dropdown-header">▼ユーザー設定</li>
                             
-                            <li class="dropdown-item">{!! link_to_route('users.delete_confirm','退会') !!}</li>                            
+                            <li class="dropdown-item">{!! link_to_route('users.delete_confirm','退会',['id' => Auth::id()]) !!}</li>                            
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                         </ul>
