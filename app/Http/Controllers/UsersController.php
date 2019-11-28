@@ -21,7 +21,7 @@ class UsersController extends Controller
         
         return view('tapiocas.favorites', $data);
     }
-    public function delete_confirm(){
+    public function delete_confirm($id){
         
         $user = \Auth::user();
         return view('tapiocas.delete_confirm',['user' => $user]);

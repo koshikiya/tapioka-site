@@ -182,7 +182,7 @@ class TapiocasController extends Controller
         return redirect('/');
     }
     
-    public function mytapioca(){
+    public function mytapioca($id){
     
         
         $data = [];
