@@ -63,7 +63,7 @@
         <div class="file">
             {!! Form::label('file-test','画像アップロード',['id' =>'file-test-label']) !!}
             {!! Form::file('photo',['id' =>'file-test']) !!}
-            <input type="text" id="file-test-name" disabled="">
+            {!! Form::text('file-test','null',['id' =>'file-test-name','disabled' => '']) !!}
         </div>
        <div class ="info">
          {!! Form::submit('投稿', ['class' => 'btn btn-default btn-sm']) !!}
