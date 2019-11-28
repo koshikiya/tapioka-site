@@ -12,8 +12,6 @@
 */
 
 
-Auth::routes();
-
 Route::get('/', 'TapiocasController@index')->name('index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
