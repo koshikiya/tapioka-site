@@ -147,18 +147,13 @@ class TapiocasController extends Controller
              
         }
                 
-        $tapioca->store_name = $request->store_name;
-        $tapioca->item_name = $request->item_name;
-        $tapioca->drink_taste = $request->drink_taste;
-        $tapioca->drink_comment = $request->drink_comment;
-        $tapioca->tapioca_taste = $request->tapioca_taste;
-        $tapioca->tapioca_size = $request->tapioca_size;
-        $tapioca->tapioca_quantity = $request->tapioca_quantity;
-        $tapioca->tapioca_comment = $request->tapioca_comment;
-        $tapioca->photo = $tapioca->photo;
-        $tapioca->category = $request->category;
-        $tapioca->photo_name = $tapioca->photo_name;
-        $tapioca->save();
+         $tapioca->update([
+            'store_name'=>$request->store_name,'item_name'=>$request->item_name,
+            'drink_taste'=>$request->drink_taste,'drink_comment'=>$request->drink_comment,
+            'tapioca_taste'=>$request->tapioca_taste,'tapioca_size'=>$request->tapioca_size,
+            'tapioca_quantity'=>$request->tapioca_quantity,'tapioca_comment'=>$request->tapioca_comment,
+            'category'=>$request->category,'photo'=>$tapioca->photo,'photo_name'=>$tapioca->photo_name
+        ]);
         
          return redirect('/');    
     }
