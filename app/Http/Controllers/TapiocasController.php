@@ -45,6 +45,7 @@ class TapiocasController extends Controller
      */
     public function store(Request $request)
     {
+        $tapioca = new Tapioca;
         $this->validate($request,[
             'store_name' =>'required|max:191',
             'item_name' =>'required|max:191',
@@ -58,7 +59,6 @@ class TapiocasController extends Controller
             'category' =>'required',
         ]);
         if($request->hasFile('photo')){
-            $tapioca =new Tapioca;
             $file = $request->file('photo');
             $name = $request->file('photo')->getClientOriginalName();
             $path =\Storage::disk('s3')->putFileas('/', $file,$name,'public');
