@@ -65,7 +65,6 @@ class TapiocasController extends Controller
             $tapioca->photo = \Storage::disk('s3')->url($path);
             $tapioca->photo_name = $name;
             }else{
-                 $tapioca =new Tapioca;
                  $tapioca->photo = \Storage::disk('s3')->url("sample-image.jpg");
             }
         $request->user()->tapiocas()->create([
