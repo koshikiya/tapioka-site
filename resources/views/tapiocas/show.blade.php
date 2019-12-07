@@ -62,8 +62,8 @@
                 <div class="info"><button class="btn btn-default btn-sm" type="button" onclick="history.back()">戻る</button></div>
                 </td>
             </tr>
-        @endif
-        @if (Auth::id() != $tapioca->user_id)
+        
+        @elseif (Auth::id() != $tapioca->user_id)
             
             @if (Auth::user()->is_favorite($tapioca->id))
                 <tr>
