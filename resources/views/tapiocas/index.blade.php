@@ -17,11 +17,11 @@
                     {!! Form::open(['route' => ['tapiocas.show', $tapioca->id], 'method' => 'get']) !!}
                         {!! Form::submit('詳細', ['class' => 'btn btn-default btn-sm']) !!}
                     {!! Form::close() !!}
-                    
                 </dl>
                 @endforeach
-               
-            </div> 
+            </div>
+        @else
+            <p>投稿はありません。</p>
         @endif
        
         {{ $tapiocas->links('pagination::bootstrap-4') }}
@@ -29,13 +29,13 @@
     @else
         <div class="info">
                
-            @foreach($toptapiocas as $toptapioca)   
+            @foreach($tapiocas2 as $tapioca2)   
                 <dl>
-                    <dd>{{ $toptapioca->store_name }}</dd>
+                    <dd>{{ $tapioca2->store_name }}</dd>
      
-                    <dd>{{ $toptapioca->item_name }}</dd>
+                    <dd>{{ $tapioca2->item_name }}</dd>
                        
-                    <dd><img src="{{$toptapioca->photo}}" width="200" height="200"></dd> 
+                    <dd><img src="{{$tapioca2->photo}}" width="200" height="200"></dd> 
                     
                 </dl>
              

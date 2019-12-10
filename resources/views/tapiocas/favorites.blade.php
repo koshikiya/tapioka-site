@@ -18,9 +18,7 @@
                 {!! Form::open(['route' => ['tapiocas.show', $tapioca->id], 'method' => 'get']) !!}
                     <div class="info"> {!! Form::submit('詳細', ['class' => 'btn btn-default btn-sm']) !!}</div>
                 {!! Form::close() !!}
-                
             </dl>
-          
             @endforeach
         </div> 
         @else

@@ -2,8 +2,6 @@
 
 @section('content')
 
-    
-    
          @if(count($tapiocas)>0)
             <div class="info">
             @foreach($tapiocas as $tapioca)   

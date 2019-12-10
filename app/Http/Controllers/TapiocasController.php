@@ -16,9 +16,9 @@ class TapiocasController extends Controller
     public function index()
     {
         $tapiocas = Tapioca::orderBy('created_at', 'desc')->paginate(12);
-        $toptapiocas = Tapioca::orderBy('created_at','desc')->limit(3)->get();
+        $tapiocas2 = Tapioca::orderBy('created_at','desc')->limit(3)->get();
         $data =[
-                'toptapiocas'=> $toptapiocas,
+                'tapiocas2'=> $tapiocas2,
                 'tapiocas'=> $tapiocas,
                 ];
         
@@ -57,6 +57,7 @@ class TapiocasController extends Controller
             'photo'=>'image|mimes:jpeg,png,jpg|max:1024',
             'category' =>'required',
         ]);
+        //画像処理
         $tapioca = new Tapioca;
         if($request->hasFile('photo')){
             $file = $request->file('photo');
@@ -132,7 +133,7 @@ class TapiocasController extends Controller
             'photo'=>'image|mimes:jpeg,png,jpg|max:1024',
             'category' =>'required',
         ]);
-        
+        //画像処理
         $tapioca =Tapioca::find($id);
         if($request->hasFile('photo')){
             
