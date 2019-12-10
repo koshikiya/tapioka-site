@@ -178,14 +178,6 @@ class TapiocasController extends Controller
         return redirect('/');
     }
     
-    public function mytapioca($id){
-    
-        $user = \Auth::user();
-        $tapiocas = $user->tapiocas()->orderBy('created_at', 'desc')->paginate(12);
-        
-        return view('tapiocas.mytapioca',['tapiocas' => $tapiocas]);
-    }
-    
     public function search(Request $request){
         
         $tapiocas = Tapioca::where('category', $request->category)->orderBy('created_at', 'desc')->paginate(12);

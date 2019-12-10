@@ -21,9 +21,18 @@ class UsersController extends Controller
         
         return view('tapiocas.favorites', $data);
     }
+    
+     public function mytapioca($id){
+    
+        $user = User::find($id);
+        $tapiocas = $user->tapiocas()->orderBy('created_at', 'desc')->paginate(12);
+        
+        return view('tapiocas.mytapioca',['tapiocas' => $tapiocas]);
+    }
+    
     public function delete_confirm($id){
         
-        $user = \Auth::user();
+        $user = User::find($id);
         return view('tapiocas.delete_confirm',['user' => $user]);
     }
     
