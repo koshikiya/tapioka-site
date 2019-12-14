@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tapioca;
-//use Intervention\Image\ImageManagerStatic as Image;
+
 
 class TapiocasController extends Controller
 {
