@@ -31,9 +31,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('deleteData', 'UsersController@deleteData')->name('users.delete');
         Route::get('mytapioca','UsersController@mytapioca')->name('tapiocas.mytapioca');
     });
-    
     Route::group(['prefix' => 'tapiocas/{id}'], function () {
         Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
         Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
     });
+    
 });
