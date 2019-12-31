@@ -73,6 +73,5 @@
         {!! Form::close() !!}
         
         </dl>
-        
     </div>
 @endsection
