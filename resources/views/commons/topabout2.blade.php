@@ -50,7 +50,6 @@
     </style>
   </head>           
   <body>   
-  
    
     <!-- ヘッダー部分 -->
     <div class="jumbotron1">
@@ -60,13 +59,11 @@
           日常の中で毎日の幸せをシェアできる時間を目指して<br>
           「Tapilog」は誕生しました。<br>
           あなたもお気に入りの一杯を記録しませんか？</p>
-                  
-       
-        @if (Auth::check())
-        <p>{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'btn btn-lg midashi-btn']) !!}</p>
-        @else
-        <p>{!! link_to_route('signup.get', 'はじめる', [], ['class' =>'btn btn-lg midashi-btn']) !!}</p>
         
+        @if (Auth::check())
+          <p>{!! link_to_route('tapiocas.create','投稿する',[],['class'=>'btn btn-lg midashi-btn']) !!}</p>
+        @else
+          <p>{!! link_to_route('signup.get', 'はじめる', [], ['class' =>'btn btn-lg midashi-btn']) !!}</p>
         @endif
       </div>
     </div>

@@ -2,14 +2,14 @@
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#778899;"> 
         <a class="navbar-brand" href="/">●Tapilog-site</a>
         @if (Auth::check())
-        <table>
-        <tr>
-	        {!! Form::open(['route' => ['tapiocas.search'],'method' => 'get']) !!}
-                <td>{!! Form::select('category', ['' => 'カテゴリ選択してください', '黒糖' => '黒糖', 'ミルクティー' => 'ミルクティー','ティー' => 'ティー','フルーツティー' => 'フルーツティー','チーズフォーム' => 'チーズフォーム','スムージー' => 'スムージー'], null, ['class' => 'form-control']) !!}</td>
-                <td><div class="info2">{!! Form::submit('検索',['class' => 'btn btn-default btn-sm']) !!}</div></td>
-            {!! Form::close() !!}
-        </tr>
-    　　</table>
+            <table>
+                <tr>
+        	        {!! Form::open(['route' => ['tapiocas.search'],'method' => 'get']) !!}
+                        <td>{!! Form::select('category', ['' => 'カテゴリ選択してください', '黒糖' => '黒糖', 'ミルクティー' => 'ミルクティー','ティー' => 'ティー','フルーツティー' => 'フルーツティー','チーズフォーム' => 'チーズフォーム','スムージー' => 'スムージー'], null, ['class' => 'form-control']) !!}</td>
+                        <td><div class="info2">{!! Form::submit('検索',['class' => 'btn btn-default btn-sm']) !!}</div></td>
+                    {!! Form::close() !!}
+                </tr>
+        　　</table>
         @endif
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
