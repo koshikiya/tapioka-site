@@ -4,9 +4,8 @@
 
     <div class="table">
         <dl>
-        {!! Form::model($tapioca, ['route'=>'tapiocas.store',"enctype"=>"multipart/form-data"]) !!}
+            {!! Form::model($tapioca, ['route'=>'tapiocas.store',"enctype"=>"multipart/form-data"]) !!}
                     
-                  
         <th>
             <td>
                 {!! Form::label('store_name','店舗名') !!}
@@ -68,10 +67,9 @@
         </div>
         
         <div class ="info">
-         {!! Form::submit('投稿', ['class' => 'btn btn-default btn-sm']) !!}
+            {!! Form::submit('投稿', ['class' => 'btn btn-default btn-sm']) !!}
         </div>            
         {!! Form::close() !!}
-        
         </dl>
     </div>
 @endsection

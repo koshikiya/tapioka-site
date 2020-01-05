@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">
-        
-    </div>
-
+  
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
             <h5>＊確認</h5>
