@@ -24,6 +24,7 @@ Route::get('about', 'TapiocasController@about')->name('about.get');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('tapiocas', 'TapiocasController',['only'=>['create','store','show','edit','update','destroy']]);
     Route::get('search','TapiocasController@search')->name('tapiocas.search');
+    Route::get('keyword','TapiocasController@keyword')->name('tapiocas.keyword');
    
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
