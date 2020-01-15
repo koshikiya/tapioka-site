@@ -188,18 +188,5 @@ class TapiocasController extends Controller
     public function about(){
         return view('tapiocas.about');
     }
-    public function keyword(Request $request){
-        
-        $keyword = $request->keyword;
-        
-        if(!empty($keyword)){
-            $tapiocas = Tapioca::where('store_name', 'like', '%'.$keyword.'%')
-            ->orWhere('item_name', 'like', '%'.$keyword.'%')->orderBy('created_at', 'desc')->paginate(12);
-        }else{
-            $tapiocas = Tapioca::orderBy('created_at', 'desc')->paginate(12);
-        }
-       
-        return view('tapioca.keyword',['tapiocas' => $tapiocas]);
-    }
-   
+    
 }
