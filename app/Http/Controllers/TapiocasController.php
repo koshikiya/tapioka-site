@@ -45,7 +45,7 @@ class TapiocasController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $request->validate([
             'store_name' =>'required|max:191',
             'item_name' =>'required|max:191',
             'drink_taste' =>'required',
@@ -121,7 +121,7 @@ class TapiocasController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $this->validate($request,[
+        $request->validate([
             'store_name' =>'required|max:191',
             'item_name' =>'required|max:191',
             'drink_taste' =>'required',
